@@ -71,6 +71,10 @@ return require('packer').startup(function(use)
 
   use("folke/zen-mode.nvim")
   use("laytan/cloak.nvim")
-
+  use("jose-elias-alvarez/null-ls.nvim")
+  use("jay-babu/mason-null-ls.nvim")
+  use("mfussenegger/nvim-dap")
+  use("mfussenegger/nvim-dap-python")
+  
 end)
 
