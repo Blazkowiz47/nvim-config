@@ -1,7 +1,7 @@
 require("blazkowiz47.set")
 require("blazkowiz47.remap")
 
-
+local augroup = vim.api.nvim_create_augroup
 local autocmd = vim.api.nvim_create_autocmd
 local yank_group = augroup('HighlightYank', {})
 
