@@ -8,6 +8,7 @@ require('mason-lspconfig').setup({
     'pyright',
     'mypy',
     'ruff',
+    'black',
   },
 })
 
