@@ -45,4 +45,4 @@ vim.keymap.set("n", "<leader><leader>", function()
 end)
 
 
-vim.keymap.set("n", "<leader>cpy","<cmd>!python %:p<CR>")
+vim.keymap.set("n", "<leader>rpy","<cmd>!python %:p<CR>")

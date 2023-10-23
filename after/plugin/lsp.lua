@@ -2,13 +2,17 @@ local lsp = require('lsp-zero')
 
 lsp.preset('recommended')
 
-require('mason').setup({})
+require('mason').setup({
+  ensure_installed = {
+    "mypy",
+    "debugpy",
+    "ruff",
+    "pyright",
+  }
+})
 require('mason-lspconfig').setup({
   ensure_installed = {
     'pyright',
-    'mypy',
-    'ruff',
-    'black',
   },
 })
 

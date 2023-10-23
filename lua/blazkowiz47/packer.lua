@@ -12,7 +12,6 @@ return require('packer').startup(function(use)
 	  -- or                            , branch = '0.1.x',
 	  requires = { {'nvim-lua/plenary.nvim'} }
   }
-
   use({
 	  'rose-pine/neovim',
 	  as = 'rose-pine',
@@ -74,7 +73,12 @@ return require('packer').startup(function(use)
   use("jose-elias-alvarez/null-ls.nvim")
   use("jay-babu/mason-null-ls.nvim")
   use("mfussenegger/nvim-dap")
-  use("mfussenegger/nvim-dap-python")
+  use("mfussenegger/nvim-dap-python",
+  ft = "python",
+  dependencies = {
+      "mfussenegger/nvim-dap",
+    },
+  )
   
 end)
 
