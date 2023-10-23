@@ -46,3 +46,6 @@ end)
 
 
 vim.keymap.set("n", "<leader>cpy","<cmd>!python %:p<CR>")
+
+vim.keymap.set("v", "<leader>#" ,":s/^/#/<CR>:noh<CR>")
+vim.keymap.set("v", "<leader>-#" ,":s/^#//<CR>:noh<CR>")
