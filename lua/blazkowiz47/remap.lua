@@ -46,3 +46,6 @@ end)
 
 
 vim.keymap.set("n", "<leader>rpy","<cmd>!python %:p<CR>")
+
+vim.keymap.set("v", "#", ":s/^/# /<CR>:noh<CR>" )
+vim.keymap.set("v", "##", ":s/^# //<CR>:noh<CR>" )
