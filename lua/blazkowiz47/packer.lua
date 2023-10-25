@@ -73,12 +73,12 @@ return require('packer').startup(function(use)
   use("jose-elias-alvarez/null-ls.nvim")
   use("jay-babu/mason-null-ls.nvim")
   use("mfussenegger/nvim-dap")
-  use("mfussenegger/nvim-dap-python",
-  ft = "python",
-  dependencies = {
-      "mfussenegger/nvim-dap",
-    },
-  )
+  use{
+    "mfussenegger/nvim-dap-python",
+    requires = {
+        "mfussenegger/nvim-dap",
+      },
+  }
   
 end)
 
