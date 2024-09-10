@@ -13,7 +13,7 @@ config = {
   background = {
     {
       source = {
-        File = "/home/blazkowiz47/Pictures/bg-dark-loner.jpeg"
+        File = "/Users/sushrutpatwardhan/.config/nvim/bg-dark-loner.jpeg"
       },
       hsb = {
         hue = 1.0,
