@@ -62,7 +62,10 @@ return require('packer').startup(function(use)
       { 'hrsh7th/cmp-nvim-lua' },
 
       -- Snippets
-      { 'L3MON4D3/LuaSnip' },
+      { 
+        'L3MON4D3/LuaSnip',
+        run = "make install_jsregexp"
+      },
       { 'rafamadriz/friendly-snippets' },
     }
   }
