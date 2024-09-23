@@ -1,7 +1,8 @@
 local wezterm = require("wezterm")
 local mux = wezterm.mux
+local act = wezterm.action
 wezterm.on("gui-startup", function()
-  local tab, pane, window = mux.spawn_window{}
+  local _, _, window = mux.spawn_window {}
   window:gui_window():maximize()
 end)
 
@@ -37,6 +38,42 @@ config = {
       height = "100%",
       opacity = 0.55,
     },
+  },
+  leader = {
+    key = "a", mods = "CTRL", timeout_milliseconds = 700,
+  },
+  keys = {
+    {
+      key = "v",
+      mods = "LEADER",
+      action = act.SplitHorizontal { domain = "CurrentPaneDomain" },
+    },
+    {
+      key = "s",
+      mods = "LEADER",
+      action = act.SplitVertical { domain = "CurrentPaneDomain" },
+    },
+    {
+      key = "h",
+      mods = "ALT",
+      action = act.ActivatePaneDirection("Left"),
+    },
+    {
+      key = "j",
+      mods = "ALT",
+      action = act.ActivatePaneDirection("Down"),
+    },
+    {
+      key = "k",
+      mods = "ALT",
+      action = act.ActivatePaneDirection("Up"),
+    },
+    {
+      key = "l",
+      mods = "ALT",
+      action = act.ActivatePaneDirection("Right"),
+    },
+
   },
 }
 
