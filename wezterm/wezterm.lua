@@ -19,7 +19,7 @@ config = {
   background = {
     {
       source = {
-        File = "/Users/sushrutpatwardhan/.config/nvim/bg-dark-loner.jpeg"
+        File = "../bg-dark-loner.jpeg"
       },
       hsb = {
         hue = 1.0,
@@ -40,7 +40,7 @@ config = {
     },
   },
   leader = {
-    key = "a", mods = "CTRL", timeout_milliseconds = 700,
+    key = "b", mods = "CTRL", timeout_milliseconds = 700,
   },
   keys = {
     {
