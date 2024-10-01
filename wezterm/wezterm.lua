@@ -19,7 +19,7 @@ config = {
   background = {
     {
       source = {
-        File = "../bg-dark-loner.jpeg"
+        File = "./bg-dark-loner.jpeg"
       },
       hsb = {
         hue = 1.0,
