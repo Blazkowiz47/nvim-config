@@ -19,7 +19,7 @@ config = {
   background = {
     {
       source = {
-        File = "./bg-dark-loner.jpeg"
+        File = "/home/blazkowiz47/.config/nvim/wezterm/bg-dark-loner.jpeg"
       },
       hsb = {
         hue = 1.0,
@@ -30,17 +30,9 @@ config = {
       width = "100%",
       height = "100%",
     },
-    {
-      source = {
-        Color = "#282c35",
-      },
-      width = "100%",
-      height = "100%",
-      opacity = 0.55,
-    },
   },
   leader = {
-    key = "b", mods = "CTRL", timeout_milliseconds = 700,
+    key = "b", mods = "ALT", timeout_milliseconds = 700,
   },
   keys = {
     {
@@ -55,22 +47,22 @@ config = {
     },
     {
       key = "h",
-      mods = "ALT",
+      mods = "SHIFT",
       action = act.ActivatePaneDirection("Left"),
     },
     {
       key = "j",
-      mods = "ALT",
+      mods = "SHIFT",
       action = act.ActivatePaneDirection("Down"),
     },
     {
       key = "k",
-      mods = "ALT",
+      mods = "SHIFT",
       action = act.ActivatePaneDirection("Up"),
     },
     {
       key = "l",
-      mods = "ALT",
+      mods = "SHIFT",
       action = act.ActivatePaneDirection("Right"),
     },
 
