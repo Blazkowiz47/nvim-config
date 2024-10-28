@@ -62,61 +62,58 @@ config.keys = {
 }
 
 local BinaryFormat = package.cpath:match("%p[\\|/]?%p(%a+)")
--- print(string.format("Result: %s", BinaryFormat))
+print(string.format("Result: %s", BinaryFormat))
 if BinaryFormat == "Program" then
   -- print("hello windows here")
-    config.default_prog = { "powershell.exe" }
-    config.background = {
-      {
-        source = {
-          File = "C:/Users/sushr/OneDrive/Pictures/Saved Pictures/bg-dark-loner.jpeg"
-        },
-        hsb = {
-          hue = 1.0,
-          saturation = 1.02,
-          brightness = 0.25,
-
-        },
-        width = "100%",
-        height = "100%",
+  config.default_prog = { "powershell.exe" }
+  config.background = {
+    {
+      source = {
+        File = "C:/Users/sushr/OneDrive/Pictures/Saved Pictures/bg-dark-loner.jpeg"
       },
-    }
- 
+      hsb = {
+        hue = 1.0,
+        saturation = 1.02,
+        brightness = 0.25,
+
+      },
+      width = "100%",
+      height = "100%",
+    },
+  }
 elseif BinaryFormat == "so" then
-    config.default_prog = { "/bin/bash" }
-    config.background = {
-      {
-        source = {
-          File = "~/.config/nvim/bg-dark-loner.jpeg"
-        },
-        hsb = {
-          hue = 1.0,
-          saturation = 1.02,
-          brightness = 0.25,
-
-        },
-        width = "100%",
-        height = "100%",
+  config.default_prog = { "/bin/bash" }
+  config.background = {
+    {
+      source = {
+        File = "/home/blazkowiz47/.config/nvim/wezterm/bg-dark-loner.jpeg"
       },
-    }
-  
+      hsb = {
+        hue = 1.0,
+        saturation = 1.02,
+        brightness = 0.25,
+
+      },
+      width = "100%",
+      height = "100%",
+    },
+  }
 elseif BinaryFormat == "dylib" then
-    confg.background = {
-      {
-        source = {
-          File = "/Users/sushr/.config/nvim/bg-dark-loner.jpeg"
-        },
-        hsb = {
-          hue = 1.0,
-          saturation = 1.02,
-          brightness = 0.25,
-
-        },
-        width = "100%",
-        height = "100%",
+  config.background = {
+    {
+      source = {
+        File = "/Users/sushr/.config/nvim/bg-dark-loner.jpeg"
       },
-    }
-  
+      hsb = {
+        hue = 1.0,
+        saturation = 1.02,
+        brightness = 0.25,
+
+      },
+      width = "100%",
+      height = "100%",
+    },
+  }
 end
 
 return config
