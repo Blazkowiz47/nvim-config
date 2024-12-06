@@ -159,12 +159,12 @@
 
   {
     "command": "editor.action.goToDeclaration",
-    "key": "g d",
+    "key": "space g d",
     "when": "vim.mode == 'Normal' && (editorTextFocus)"
   },
   {
     "command": "editor.action.goToReferences",
-    "key": "g r",
+    "key": "space g r",
     "when": "vim.mode == 'Normal' && (editorTextFocus)"
   },
 
