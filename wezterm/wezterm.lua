@@ -82,27 +82,10 @@ if BinaryFormat == "Program" then
     },
   }
 elseif BinaryFormat == "so" then
-  config.default_prog = { "/bin/bash" }
   config.background = {
     {
       source = {
-        File = "/home/blazkowiz47/.config/nvim/wezterm/bg-dark-loner.jpeg"
-      },
-      hsb = {
-        hue = 1.0,
-        saturation = 1.02,
-        brightness = 0.25,
-
-      },
-      width = "100%",
-      height = "100%",
-    },
-  }
-elseif BinaryFormat == "dylib" then
-  config.background = {
-    {
-      source = {
-        File = "/Users/sushr/.config/nvim/bg-dark-loner.jpeg"
+        File = "/Users/sushrutpatwardhan/.config/nvim/wezterm/bg-dark-loner.jpeg"
       },
       hsb = {
         hue = 1.0,
