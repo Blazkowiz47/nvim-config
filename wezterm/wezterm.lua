@@ -85,7 +85,7 @@ elseif BinaryFormat == "so" then
   config.background = {
     {
       source = {
-        File = "/Users/sushrutpatwardhan/.config/nvim/wezterm/bg-dark-loner.jpeg"
+        File = "/home/ubuntu/.config/nvim/wezterm/bg-dark-loner.jpeg"
       },
       hsb = {
         hue = 1.0,
