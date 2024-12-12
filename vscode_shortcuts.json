@@ -1,0 +1,177 @@
+// Place your key bindings in this file to override the defaultsauto[]
+[
+  {
+    "command": "editor.action.formatDocument",
+    "key": "shift+cmd+i",
+    "when": "editorHasDocumentFormattingProvider && editorTextFocus && !editorReadonly && !inCompositeEditor"
+  },
+  {
+    "command": "notebook.formatCell",
+    "key": "shift+cmd+i",
+    "when": "editorHasDocumentFormattingProvider && editorTextFocus && inCompositeEditor && notebookEditable && !editorReadonly && activeEditor == 'workbench.editor.notebook'"
+  },
+  {
+    "command": "-notebook.formatCell",
+    "key": "shift+alt+f",
+    "when": "editorHasDocumentFormattingProvider && editorTextFocus && inCompositeEditor && notebookEditable && !editorReadonly && activeEditor == 'workbench.editor.notebook'"
+  },
+  {
+    "command": "jupyter.runcurrentcell",
+    "key": "shift+cmd+enter",
+    "when": "editorTextFocus && isWorkspaceTrusted && jupyter.hascodecells && !editorHasSelection && !jupyter.havenativecells && !notebookEditorFocused"
+  },
+  {
+    "command": "-jupyter.runcurrentcell",
+    "key": "ctrl+enter",
+    "when": "editorTextFocus && isWorkspaceTrusted && jupyter.hascodecells && !editorHasSelection && !jupyter.havenativecells && !notebookEditorFocused"
+  },
+  {
+    "command": "jupyter.runAndDebugCell",
+    "key": "shift+cmd",
+    "when": "isWorkspaceTrusted && jupyter.ispythonnotebook && !notebookKernel && notebookCellType == 'code' || isWorkspaceTrusted && jupyter.ispythonnotebook && notebookCellType == 'code' && notebookKernel =~ /^ms-toolsai.jupyter\\// && resource not in 'jupyter.notebookeditor.debugDocuments'"
+  },
+  {
+    "command": "-jupyter.runAndDebugCell",
+    "key": "ctrl+shift+enter",
+    "when": "isWorkspaceTrusted && jupyter.ispythonnotebook && !notebookKernel && notebookCellType == 'code' || isWorkspaceTrusted && jupyter.ispythonnotebook && notebookCellType == 'code' && notebookKernel =~ /^ms-toolsai.jupyter\\// && resource not in 'jupyter.notebookeditor.debugDocuments'"
+  },
+  {
+    "command": "jupyter.runallcells",
+    "key": "f9"
+  },
+  {
+    "command": "jupyter.runcurrentcelladvance",
+    "key": "ctrl+enter",
+    "when": "editorTextFocus && isWorkspaceTrusted && jupyter.hascodecells && !editorHasSelection && !notebookEditorFocused"
+  },
+  {
+    "command": "-jupyter.runcurrentcelladvance",
+    "key": "shift+enter",
+    "when": "editorTextFocus && isWorkspaceTrusted && jupyter.hascodecells && !editorHasSelection && !notebookEditorFocused"
+  },
+  {
+    "command": "-workbench.action.replaceInFiles",
+    "key": "shift+cmd+h"
+  },
+  {
+    "command": "workbench.action.closePanel",
+    "key": "shift+cmd+h"
+  },
+  // Place your key bindings in this file to override the defaults
+  {
+    "command": "workbench.action.navigateLeft",
+    "key": "ctrl-w h"
+  },
+  {
+    "command": "workbench.action.navigateRight",
+    "key": "ctrl-w l"
+  },
+  {
+    "command": "workbench.action.navigateUp",
+    "key": "ctrl-w k"
+  },
+  {
+    "command": "workbench.action.navigateDown",
+    "key": "ctrl-w j"
+  },
+  {
+    "command": "workbench.action.showAllEditors",
+    "key": "space ,",
+    "when": "vim.mode == 'Normal' && (editorTextFocus)"
+  },
+  {
+    "args": {
+      "commands": [
+        "workbench.action.toggleSidebarVisibility",
+        "workbench.files.action.focusFilesExplorer"
+      ]
+    },
+    "command": "runCommands",
+    "key": "space e",
+    "when": "vim.mode == 'Normal' && (editorTextFocus || !inputFocus) && !sideBarFocus"
+  },
+  {
+    "args": {
+      "commands": [
+        "workbench.action.toggleSidebarVisibility",
+        "workbench.action.focusActiveEditorGroup"
+      ]
+    },
+    "command": "runCommands",
+    "key": "space e",
+    "when": "sideBarFocus && !inputFocus"
+  },
+  {
+    "command": "workbench.action.toggleSidebarVisibility",
+    "key": "space e",
+    "when": "vim.mode == 'Normal' && editorTextFocus && foldersViewVisible"
+  },
+  {
+    "command": "workbench.action.nextEditorInGroup",
+    "key": "tab",
+    "when": "(vim.mode == 'Normal' || vim.mode == 'Visual') && (editorTextFocus || !inputFocus)"
+  },
+  {
+    "command": "workbench.action.previousEditorInGroup",
+    "key": "shift-tab",
+    "when": "(vim.mode == 'Normal' || vim.mode == 'Visual') && (editorTextFocus || !inputFocus)"
+  },
+  // Coding
+  {
+    "command": "workbench.action.quickOpen",
+    "key": "space p f",
+    "when": "vim.mode == 'Normal' && editorTextFocus"
+  },
+  {
+    "command": "toggleVim",
+    "key": "ctrl+shift+v"
+  },
+  {
+    "command": "editor.action.moveLinesUpAction",
+    "key": "shift+k",
+    "when": "vim.mode != 'Insert' && (editorTextFocus)"
+  },
+  {
+    "command": "editor.action.moveLinesDownAction",
+    "key": "shift+j",
+    "when": "vim.mode != 'Insert' && (editorTextFocus)"
+  },
+  {
+    "command": "editor.action.codeAction",
+    "key": "space v c a",
+    "when": "vim.mode == 'Normal' && (editorTextFocus)"
+  },
+  {
+    "command": "editor.action.showHover",
+    "key": "shift+k",
+    "when": "vim.mode == 'Normal' && (editorTextFocus)"
+  },
+  {
+    "command": "editor.action.rename",
+    "key": "space r n",
+    "when": "vim.mode == 'Normal' && (editorTextFocus)"
+  },
+  {
+    "command": "workbench.action.closeActiveEditor",
+    "key": "space b d",
+    "when": "vim.mode == 'Normal' && (editorTextFocus)"
+  },
+
+  {
+    "command": "editor.action.goToDeclaration",
+    "key": "space g d",
+    "when": "vim.mode == 'Normal' && (editorTextFocus)"
+  },
+  {
+    "command": "editor.action.goToReferences",
+    "key": "space g r",
+    "when": "vim.mode == 'Normal' && (editorTextFocus)"
+  },
+
+  {
+    "command": "workbench.action.findInFiles",
+    "key": "space p s",
+    "when": "vim.mode == 'Normal' && (editorTextFocus || !inputFocus)"
+  }
+]
+
