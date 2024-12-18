@@ -85,7 +85,7 @@ elseif BinaryFormat == "so" then
   config.background = {
     {
       source = {
-        File = "/home/ubuntu/.config/nvim/wezterm/bg-dark-loner.jpeg"
+        File = string.format("%s/.config/nvim/wezterm/bg-dark-loner.jpeg", os.getenv('HOME'))
       },
       hsb = {
         hue = 1.0,
