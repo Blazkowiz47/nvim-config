@@ -75,9 +75,9 @@ return require('packer').startup(function(use)
   use("jay-babu/mason-null-ls.nvim")
 
   use({ "lervag/vimtex" })
-  use({ 
+  use({
     "saghen/blink.cmp",
-    requires = { 'L3MON4D3/LuaSnip', version = 'v2.*' },
+    requires = { 'L3MON4D3/LuaSnip' },
     opts = {
       snippets = {
         expand = function(snippet) require('luasnip').lsp_expand(snippet) end,

@@ -5,9 +5,6 @@ lsp.preset('recommended')
 require('mason').setup({})
 require('mason-lspconfig').setup({})
 
-local capabilities = require('blink.cmp').get_lsp_capabilities()
-require('lspconfig').lua_ls.setup { capabilities = capabilities }
-
 
 local cmp = require('cmp')
 local cmp_select = { behavior = cmp.SelectBehavior.Select }
@@ -21,9 +18,7 @@ local cmp_mappings = lsp.defaults.cmp_mappings({
 cmp_mappings['<Tab>'] = nil
 cmp_mappings['<S-Tab>'] = nil
 
-lsp.setup_nvim_cmp({
-  mapping = cmp_mappings
-})
+lsp.setup_nvim_cmp({ mapping = cmp_mappings })
 
 lsp.set_preferences({
   suggest_lsp_servers = true,
@@ -35,7 +30,7 @@ lsp.set_preferences({
   }
 })
 
-lsp.on_attach(function(client, bufnr)
+lsp.on_attach(function(_, bufnr)
   local opts = { buffer = bufnr, remap = false }
 
   vim.keymap.set("n", "gd", function() vim.lsp.buf.definition() end, opts)
