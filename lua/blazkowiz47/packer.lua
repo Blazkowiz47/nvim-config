@@ -77,7 +77,7 @@ return require('packer').startup(function(use)
   use({ "lervag/vimtex" })
   use({
     "saghen/blink.cmp",
-    requires = { 'L3MON4D3/LuaSnip' },
+    requires = { 'L3MON4D3/LuaSnip', version = 'v2.*' },
     opts = {
       snippets = {
         expand = function(snippet) require('luasnip').lsp_expand(snippet) end,
