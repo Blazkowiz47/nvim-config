@@ -4,6 +4,7 @@ local servers = {
     "lua_ls",
     "vimls",
     "jsonls",
+    "texlab",
 }
 
 return {
