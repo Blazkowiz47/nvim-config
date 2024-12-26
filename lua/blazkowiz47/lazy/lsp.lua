@@ -2,7 +2,6 @@ local servers = {
     "pyright",
     "ruff",
     "lua_ls",
-    "ltex",
     "vimls",
     "jsonls",
 }
