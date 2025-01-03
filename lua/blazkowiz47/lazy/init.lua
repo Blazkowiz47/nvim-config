@@ -7,3 +7,4 @@ return {
     "eandrju/cellular-automaton.nvim",
     "github/copilot.vim",
 }
+
