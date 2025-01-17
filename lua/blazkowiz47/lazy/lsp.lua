@@ -93,7 +93,6 @@ return {
                 -- { name = "friendly-snippets" },
             }, {
                 { name = "buffer" },
-                { name = "path" },
             })
         })
 
