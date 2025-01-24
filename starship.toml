@@ -1,3 +1,4 @@
+command_timeout = 1000
 [aws]
 format = '\[[$symbol($profile)(\($region\))(\[$duration\])]($style)\]'
 
@@ -190,4 +191,3 @@ format = '\[[$symbol($version)]($style)\]'
 [solidity]
 format = '\[[$symbol($version)]($style)\]'
 
-command_timeout = 1000
