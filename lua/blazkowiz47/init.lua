@@ -51,6 +51,13 @@ autocmd('LspAttach', {
     end
 })
 
+vim.api.nvim_create_autocmd("FileType", {
+    pattern = "python",
+    callback = function()
+        vim.opt_local.foldmethod = "indent"
+        vim.opt_local.foldignore = ""
+    end,
+})
 
 vim.g.netrw_browse_split = 0
 vim.g.netrw_banner = 0
