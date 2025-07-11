@@ -17,6 +17,7 @@ return {
     opts = {
         -- add any opts here
         -- for example
+        auto_suggetions_provide = nil,
         provider = "gemini",
         providers = {
             gemini = {
@@ -27,6 +28,9 @@ return {
                     max_tokens = 10240,
                 }
             },
+        },
+        behaviour={
+            auto_suggestions= false, -- Experimental stage
         },
     },
     dependencies = {
@@ -40,7 +44,7 @@ return {
         "stevearc/dressing.nvim",        -- for input provider dressing
         "folke/snacks.nvim",             -- for input provider snacks
         "nvim-tree/nvim-web-devicons",   -- or echasnovski/mini.icons
-        "zbirenbaum/copilot.lua",        -- for providers='copilot'
+        -- "zbirenbaum/copilot.lua",        -- for providers='copilot'
         {
             -- support for image pasting
             "HakonHarnes/img-clip.nvim",
