@@ -31,6 +31,10 @@ return {
                 lsp_doc_border = false,   -- add a border to hover docs and signature help
             },
         })
+
+        vim.keymap.set("n", "<leader>nd","<cmd>NoiceDismiss<CR>", {
+            desc = "Dismiss Noice Notifications"
+        })
     end
 
 }
