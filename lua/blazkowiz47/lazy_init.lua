@@ -26,5 +26,4 @@ vim.opt.rtp:prepend(lazypath)
 require("lazy").setup({
     spec = "blazkowiz47.lazy",
     change_detection = { notify = false },
-    install = { colorscheme = { "tokyonight" } },
 })

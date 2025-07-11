@@ -4,7 +4,7 @@ return {
         name = "plenary",
     },
     "tpope/vim-fugitive",
-    "eandrju/cellular-automaton.nvim",
     "github/copilot.vim",
+    "eandrju/cellular-automaton.nvim",
 }
 
