@@ -21,7 +21,7 @@ return {
         provider = "gemini",
         providers = {
             gemini = {
-                model = "gemini-2.5-flash",
+                model = "gemini-1.5-flash",
                 timeout = 30000, -- Timeout in milliseconds
                 extra_request_body = {
                     temperature = 0.7,
@@ -29,8 +29,8 @@ return {
                 }
             },
         },
-        behaviour={
-            auto_suggestions= false, -- Experimental stage
+        behaviour = {
+            auto_suggestions = false, -- Experimental stage
         },
     },
     dependencies = {
