@@ -6,9 +6,6 @@ keybinds clear-defaults=true {
         bind "Alt j" "Alt Down" { MoveFocus "Down"; }
         bind "Alt k" "Alt Up" { MoveFocus "Up"; }
         bind "Alt m" { ToggleFloatingPanes; } // Optional: Add other useful binds
-        bind "\"" { NewPane "down"; SwitchToMode "normal"; }
-        bind "%" { NewPane "right"; SwitchToMode "normal"; }
-        bind "d" { Detach; }
     }
     pane {
         bind "left" { MoveFocus "left"; }
