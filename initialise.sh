@@ -2,11 +2,8 @@
 
 git clone --depth 1 https://github.com/wbthomason/packer.nvim\
  ~/.local/share/nvim/site/pack/packer/start/packer.nvim
+git clone https://github.com/github/copilot.vim.git ~/.config/nvim/pack/github/start/copilot.vim
 
-ln -s $HOME/.config/nvim/tmux.conf $HOME/tmux.conf
-ln -s $HOME/.config/nvim/wezterm $HOME/.config/wezterm
-ln -s $HOME/.config/nvim/zellij $HOME/.config/zellij
-
-
-
-
+sudo npm install -g tree-sitter-cli
+sudo -y apt install luarocks fd-find ripgrep
+sudo -y luarocks install jsregexp
