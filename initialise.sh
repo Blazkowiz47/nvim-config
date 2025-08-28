@@ -11,3 +11,5 @@ stow --no-folding -vt ~ .
 sudo apt install luarocks fd-find ripgrep -y 
 sudo luarocks install jsregexp 
 sudo npm install -g tree-sitter-cli
+sudo apt install -y python3-venv
+
