@@ -52,6 +52,25 @@ autocmd('LspAttach', {
 })
 
 
+local ft_fold_augroup = augroup('FileTypeFolding', {})
+vim.opt.foldmethod = 'syntax'
+autocmd('FileType', {
+    pattern = { 'python' },
+    callback = function()
+        vim.opt_local.foldmethod = 'indent'
+    end,
+    group = ft_fold_augroup,
+})
+autocmd('FileType', {
+    pattern = { 'markdown', 'text' },
+    callback = function()
+        vim.opt_local.foldmethod = 'manual'
+    end,
+    group = ft_fold_augroup,
+})
+
+
+
 vim.g.netrw_browse_split = 0
 vim.g.netrw_banner = 0
 vim.g.netrw_winsize = 25
