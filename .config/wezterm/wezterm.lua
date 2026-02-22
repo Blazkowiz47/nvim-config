@@ -68,7 +68,7 @@ if BinaryFormat == "Program" then
     config.background = {
         {
             source = {
-                File = string.format("%s/bg-dark-loner.jpeg", os.getenv('USERPROFILE'))
+                File = string.format("%s/wezterm/bg-dark-loner.jpeg", os.getenv('USERPROFILE'))
             },
             hsb = {
                 hue = 1.0,
