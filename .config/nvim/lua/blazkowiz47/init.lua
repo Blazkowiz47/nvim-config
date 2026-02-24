@@ -69,6 +69,17 @@ autocmd('FileType', {
     group = ft_fold_augroup,
 })
 
+autocmd('FileType', {
+    pattern = { '*' },
+    callback = function()
+        local lang = vim.treesitter.language.get_lang(vim.bo.filetype)
+        if lang then
+            pcall(vim.treesitter.start)
+        end
+    end,
+    group = ft_fold_augroup,
+})
+
 
 
 vim.g.netrw_browse_split = 0

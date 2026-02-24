@@ -1,14 +1,12 @@
 return {
     "nvim-treesitter/nvim-treesitter",
+    lazy = false,
     build = ":TSUpdate",
     config = function()
         require('nvim-treesitter').setup({
-            ensure_installed = { "javascript", "python", "cpp", "cmake", "c", "lua", "vimdoc", "json", "latex" },
-            auto_install = true,
-            highlight = {
-                enable = true,
-                additional_vim_regex_highlighting = true,
-            }
+            install_dir = vim.fn.stdpath('data') .. '/site',
         })
+
+        require('nvim-treesitter').install({ "javascript", "python", "cpp", "cmake", "c", "lua", "vimdoc", "json", "latex" })
     end,
 }
