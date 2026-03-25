@@ -36,7 +36,6 @@ return {
             require("cmp_nvim_lsp").default_capabilities()
         )
         local function get_python_path(workspace)
-            -- 1. Activated conda env
             if vim.env.CONDA_PREFIX then
                 local python = vim.env.CONDA_PREFIX .. "/bin/python"
                 if vim.fn.executable(python) == 1 then
@@ -44,7 +43,6 @@ return {
                 end
             end
 
-            -- 2. Activated venv / virtualenv
             if vim.env.VIRTUAL_ENV then
                 local python = vim.env.VIRTUAL_ENV .. "/bin/python"
                 if vim.fn.executable(python) == 1 then
@@ -52,7 +50,6 @@ return {
                 end
             end
 
-            -- 3. Project-local .venv
             if workspace then
                 local python = workspace .. "/.venv/bin/python"
                 if vim.fn.executable(python) == 1 then
@@ -60,7 +57,6 @@ return {
                 end
             end
 
-            -- 4. Fallback
             return vim.fn.exepath("python3") or vim.fn.exepath("python") or "python"
         end
 
@@ -86,29 +82,29 @@ return {
                     }
                 end,
                 ["pyright"] = function()
-                    lspconfig.pyright.setup {
-                        before_init = function(_, config)
-                            config.settings = config.settings or {}
-                            config.settings.python = config.settings.python or {}
-                            config.settings.python.pythonPath = get_python_path(config.root_dir)
+                    lspconfig.pyright.setup({
+                        on_new_config = function(new_config, new_root_dir)
+                            new_config.settings = new_config.settings or {}
+                            new_config.settings.pyright = new_config.settings.pyright or {}
+                            new_config.settings.pyright.disableOrganizeImports = true
+
+                            new_config.settings.python = new_config.settings.python or {}
+                            new_config.settings.python.pythonPath = get_python_path(new_root_dir)
                         end,
                         settings = {
                             pyright = {
-                                disableOrganizeImports = true, -- Using Ruff
+                                disableOrganizeImports = true,
                             },
                         },
                         capabilities = capabilities,
-                    }
+                    })
                 end,
+
                 ["ruff"] = function()
                     lspconfig.ruff.setup({
-                        before_init = function(_, config)
-                            local python = get_python_path(config.root_dir)
-
-                            config.init_options = config.init_options or {}
-                            config.init_options.settings = config.init_options.settings or {}
-                            config.init_options.settings.interpreter = { python }
-                        end,
+                        init_options = {
+                            settings = {},
+                        },
                         capabilities = capabilities,
                     })
                 end,
