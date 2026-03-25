@@ -35,35 +35,11 @@ return {
             vim.lsp.protocol.make_client_capabilities(),
             require("cmp_nvim_lsp").default_capabilities()
         )
-        local function get_python_path()
-            local workspace = vim.fn.getcwd()
-            if vim.env.CONDA_PREFIX then
-                local python = vim.env.CONDA_PREFIX .. "/bin/python"
-                if vim.fn.executable(python) == 1 then
-                    return python
-                end
-            end
-
-            if vim.env.VIRTUAL_ENV then
-                local python = vim.env.VIRTUAL_ENV .. "/bin/python"
-                if vim.fn.executable(python) == 1 then
-                    return python
-                end
-            end
-
-            if workspace then
-                local python = workspace .. "/.venv/bin/python"
-                if vim.fn.executable(python) == 1 then
-                    return python
-                end
-            end
-
-            return vim.fn.exepath("python3") or vim.fn.exepath("python") or "python"
-        end
 
         -- Set up lspconfig.
         require("mason-lspconfig").setup({
             ensure_installed = servers,
+
             handlers = {
                 function(servername) -- default handler (optional)
                     lspconfig[servername].setup({
@@ -85,17 +61,13 @@ return {
                 ["pyright"] = function()
                     lspconfig.pyright.setup {
                         settings = {
-                            python = {
-                                pythonPath = get_python_path()
-                            },
                             pyright = {
                                 disableOrganizeImports = true, -- Using Ruff
                             },
                         },
                         capabilities = capabilities,
                     }
-                end
-
+                end,
             },
         })
 
