@@ -35,7 +35,8 @@ return {
             vim.lsp.protocol.make_client_capabilities(),
             require("cmp_nvim_lsp").default_capabilities()
         )
-        local function get_python_path(workspace)
+        local function get_python_path()
+            local workspace = vim.fn.getcwd()
             if vim.env.CONDA_PREFIX then
                 local python = vim.env.CONDA_PREFIX .. "/bin/python"
                 if vim.fn.executable(python) == 1 then
@@ -82,32 +83,19 @@ return {
                     }
                 end,
                 ["pyright"] = function()
-                    lspconfig.pyright.setup({
-                        on_new_config = function(new_config, new_root_dir)
-                            new_config.settings = new_config.settings or {}
-                            new_config.settings.pyright = new_config.settings.pyright or {}
-                            new_config.settings.pyright.disableOrganizeImports = true
-
-                            new_config.settings.python = new_config.settings.python or {}
-                            new_config.settings.python.pythonPath = get_python_path(new_root_dir)
-                        end,
+                    lspconfig.pyright.setup {
                         settings = {
+                            python = {
+                                pythonPath = get_python_path()
+                            },
                             pyright = {
-                                disableOrganizeImports = true,
+                                disableOrganizeImports = true, -- Using Ruff
                             },
                         },
                         capabilities = capabilities,
-                    })
-                end,
+                    }
+                end
 
-                ["ruff"] = function()
-                    lspconfig.ruff.setup({
-                        init_options = {
-                            settings = {},
-                        },
-                        capabilities = capabilities,
-                    })
-                end,
             },
         })
 
