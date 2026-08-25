@@ -36,19 +36,19 @@ local function ssh_domain_choices()
     return choices
 end
 
-local select_ssh_window = wezterm.action_callback(function(window, pane)
+local select_ssh_tab = wezterm.action_callback(function(window, pane)
     window:perform_action(
         act.InputSelector {
-            title = "New SSH window",
+            title = "New SSH tab",
             description = "Select an SSH host",
             fuzzy = true,
             choices = ssh_domain_choices(),
-            action = wezterm.action_callback(function(_, _, domain_name)
+            action = wezterm.action_callback(function(inner_window, inner_pane, domain_name)
                 if domain_name then
-                    local _, _, mux_window = mux.spawn_window {
-                        domain = { DomainName = domain_name },
-                    }
-                    maximize_after_layout(mux_window)
+                    inner_window:perform_action(
+                        act.SpawnTab { DomainName = domain_name },
+                        inner_pane
+                    )
                 end
             end),
         },
@@ -172,7 +172,7 @@ config.key_tables = {
         { key = "%", action = act.SplitHorizontal { domain = "CurrentPaneDomain" } },
         { key = '"', action = act.SplitVertical { domain = "CurrentPaneDomain" } },
         { key = "d", action = act.DetachDomain("CurrentPaneDomain") },
-        { key = "T", action = select_ssh_window },
+        { key = "T", action = select_ssh_tab },
         { key = "z", action = act.TogglePaneZoomState },
         { key = "x", action = act.CloseCurrentPane { confirm = true } },
         { key = "[", action = act.ActivateCopyMode },
