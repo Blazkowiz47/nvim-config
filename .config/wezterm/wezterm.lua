@@ -16,12 +16,14 @@ local function maximize_after_layout(mux_window)
     end)
 end
 
-local function ssh_domain_choices()
+local function terminal_domain_choices()
     local choices = {}
 
     for _, domain in ipairs(mux.all_domains()) do
         local domain_name = domain:name()
-        if domain:is_spawnable() and domain_name:match("^SSH:") then
+        local is_local = domain_name == "local"
+        local is_direct_ssh = domain_name:match("^SSH:") ~= nil
+        if domain:is_spawnable() and (is_local or is_direct_ssh) then
             table.insert(choices, {
                 id = domain_name,
                 label = domain:label(),
@@ -36,13 +38,13 @@ local function ssh_domain_choices()
     return choices
 end
 
-local select_ssh_tab = wezterm.action_callback(function(window, pane)
+local select_terminal_tab = wezterm.action_callback(function(window, pane)
     window:perform_action(
         act.InputSelector {
-            title = "New SSH tab",
-            description = "Select an SSH host",
+            title = "New terminal tab",
+            description = "Select the local terminal or an SSH host",
             fuzzy = true,
-            choices = ssh_domain_choices(),
+            choices = terminal_domain_choices(),
             action = wezterm.action_callback(function(inner_window, inner_pane, domain_name)
                 if domain_name then
                     inner_window:perform_action(
@@ -172,7 +174,7 @@ config.key_tables = {
         { key = "%", action = act.SplitHorizontal { domain = "CurrentPaneDomain" } },
         { key = '"', action = act.SplitVertical { domain = "CurrentPaneDomain" } },
         { key = "d", action = act.DetachDomain("CurrentPaneDomain") },
-        { key = "T", action = select_ssh_tab },
+        { key = "T", action = select_terminal_tab },
         { key = "z", action = act.TogglePaneZoomState },
         { key = "x", action = act.CloseCurrentPane { confirm = true } },
         { key = "[", action = act.ActivateCopyMode },
