@@ -1,6 +1,7 @@
 require("blazkowiz47.set")
 require("blazkowiz47.remap")
-require('blazkowiz47.lazy_init')
+require("blazkowiz47.lazy_init")
+require("blazkowiz47.folding")
 
 
 local augroup = vim.api.nvim_create_augroup
@@ -49,35 +50,6 @@ autocmd('LspAttach', {
         vim.keymap.set("n", "<leader>rn", function() vim.lsp.buf.rename() end, opts)
         vim.keymap.set("i", "<C-h>", function() vim.lsp.buf.signature_help() end, opts)
     end
-})
-
-
-local ft_fold_augroup = augroup('FileTypeFolding', {})
-vim.opt.foldmethod = 'syntax'
-autocmd('FileType', {
-    pattern = { 'python' },
-    callback = function()
-        vim.opt_local.foldmethod = 'indent'
-    end,
-    group = ft_fold_augroup,
-})
-autocmd('FileType', {
-    pattern = { 'markdown', 'text' },
-    callback = function()
-        vim.opt_local.foldmethod = 'manual'
-    end,
-    group = ft_fold_augroup,
-})
-
-autocmd('FileType', {
-    pattern = { '*' },
-    callback = function()
-        local lang = vim.treesitter.language.get_lang(vim.bo.filetype)
-        if lang then
-            pcall(vim.treesitter.start)
-        end
-    end,
-    group = ft_fold_augroup,
 })
 
 
