@@ -6,6 +6,17 @@ local servers = {
     "jsonls",
 }
 
+local function getPythonPath(workspace)
+    -- Check for local .venv first
+    local venv_python = workspace .. "/.venv/bin/python"
+    if vim.fn.executable(venv_python) == 1 then
+        return venv_python
+    end
+
+    -- Fallback to system Python
+    return vim.fn.exepath("python3") or vim.fn.exepath("python") or "python"
+end
+
 return {
     "williamboman/mason-lspconfig.nvim",
     dependencies = {
@@ -58,8 +69,25 @@ return {
                         capabilities = capabilities,
                     }
                 end,
+                ["ruff"] = function()
+                    lspconfig.ruff.setup {
+                        capabilities = capabilities,
+                        before_init = function(_, config)
+                            -- Point Ruff to the .venv interpreter so it resolves the right Python version/rules
+                            config.settings = config.settings or {}
+                            config.settings.interpreter = { getPythonPath(config.root_dir) }
+                        end,
+                        on_attach = function(client, _)
+                            -- Disable hover in favor of Pyright
+                            client.server_capabilities.hoverProvider = false
+                        end,
+                    }
+                end,
                 ["pyright"] = function()
                     lspconfig.pyright.setup {
+                        before_init = function(_, config)
+                            config.settings.python.pythonPath = getPythonPath(config.root_dir)
+                        end,
                         settings = {
                             pyright = {
                                 disableOrganizeImports = true, -- Using Ruff

@@ -1,7 +1,13 @@
 local autocmd = vim.api.nvim_create_autocmd
 local ft_fold_augroup = vim.api.nvim_create_augroup('FileTypeFolding', { clear = true })
 
-vim.opt.foldmethod = 'syntax'
+-- Global defaults: Pre-configure Treesitter foldexpr, but keep folding manual by default
+vim.opt.foldmethod = 'manual'
+vim.opt.foldexpr = 'v:lua.vim.treesitter.foldexpr()'
+vim.opt.foldlevel = 99
+vim.opt.foldlevelstart = 99
+
+-- Python: Use indent folding instead
 autocmd('FileType', {
     pattern = { 'python' },
     callback = function()
@@ -9,21 +15,17 @@ autocmd('FileType', {
     end,
     group = ft_fold_augroup,
 })
+
+-- Dart: Enable expr folding (inherits the global Treesitter foldexpr)
 autocmd('FileType', {
-    pattern = { 'markdown', 'text' },
-    callback = function()
-        vim.opt_local.foldmethod = 'manual'
-    end,
-    group = ft_fold_augroup,
-})
-autocmd('FileType', {
-    group = ft_fold_augroup,
-    pattern = 'dart',
+    pattern = { 'dart' },
     callback = function()
         vim.opt_local.foldmethod = 'expr'
-        vim.opt_local.foldexpr = 'v:lua.vim.treesitter.foldexpr()'
     end,
+    group = ft_fold_augroup,
 })
+
+-- Enable Treesitter highlighting globally
 autocmd('FileType', {
     pattern = { '*' },
     callback = function()
@@ -34,5 +36,4 @@ autocmd('FileType', {
     end,
     group = ft_fold_augroup,
 })
-
 
